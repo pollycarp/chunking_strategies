@@ -1,0 +1,20 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16   # Postgres 16 with pgvector pre-installed
+    container_name: massa_db
+    environment:
+      POSTGRES_DB: massa_platform
+      POSTGRES_USER: massa
+      POSTGRES_PASSWORD: changeme
+    ports:
+      - "5432:5432"                 # Expose to localhost so our app can connect
+    volumes:
+      - massa_db_data:/var/lib/postgresql/data   # Persist data across restarts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U massa -d massa_platform"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  massa_db_data:

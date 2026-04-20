@@ -1,0 +1,89 @@
+About the job
+
+Data & AI Engineer — Retrieval, Context & LLM Integration
+
+
+Who We Are
+
+
+MASSA Advisors is a recently founded AI advisory firm built by veterans of McKinsey and private equity. We work hands-on with clients to understand their operations deeply and build bespoke AI solutions tailored to how they actually work: systems designed around their specific workflows, data, and decision-making processes.
+
+
+Every engagement starts with the client's problem. We sit with CxOs and their teams, map what's painful, and build precisely what's needed.
+
+
+We're small, moving fast, and hiring people who want to grow with us. You'll gain direct exposure to senior stakeholders and C-suite conversations, and work hands-on with cutting-edge AI infrastructure.
+
+
+About the Role
+
+
+LLMs are only as useful as the context they receive. Your job is to make that context excellent.
+
+
+We build AI platforms for institutional clients in private equity, agribusiness, and financial services. That means moving their real data — portfolio financials from ERPs, operational metrics from sensor platforms, qualitative knowledge from documents, emails, and meeting notes — into forms an LLM can reason about precisely.
+
+
+You'll own the full pipeline from raw source to LLM-ready context: structured data (SQL over dimensional models that an LLM can query via MCP tools) and unstructured data (retrieval-augmented generation over documents, decisions, and domain knowledge). You'll decide how that context is shaped, chunked, retrieved, and exposed — and you'll measure whether it actually makes the LLM smarter.
+
+
+What You'll Do
+
+
+    Design and build retrieval pipelines: ingestion, chunking strategies (semantic, fixed-size, hierarchical), embedding generation, indexing, and hybrid retrieval (keyword + semantic + re-ranking + metadata filtering).
+    Build the structured data layer: SQL schemas and query interfaces that let LLMs access quantitative data precisely — dimensional modelling, aggregation, filtering, precision-preserving query generation.
+    Integrate client data sources: ERPs (Jedox, Sage 300...), spreadsheets, sensor platforms, and document repositories. Design ingestion and reconciliation that keep data fresh and trustworthy without constant human intervention.
+    Shape LLM tool interfaces (MCP): tool descriptions, parameter schemas, and output formats that steer LLMs toward accurate, well-scoped answers. This is where prompt engineering meets API design.
+    Evaluate rigorously. We already run a 200+ question benchmark against production; you'll extend it. Measure retrieval quality (recall, precision, MRR), answer fidelity, hallucination rate, latency, cost 
+    Own data quality: validation, deduplication, staleness detection, reconciliation across structured and unstructured sources. If the data is wrong, the LLM is wrong, and the client notices.
+    Choose your tools intentionally: embedding models (commercial vs. open-source), vector storage (pgvector vs. dedicated vector DB), retrieval stacks 
+    Contribute to observability: query performance tracking, tool usage analytics, audit logging across the data layer.
+    Work with Claude as a pair. We build fast because we use AI to help us write, review, and evaluate. You'll be expected to be sharp about where that helps and where it doesn't.
+
+
+You Might Be a Good Fit If You
+
+
+    Understand the science behind RAG, not just the tooling — why certain chunking strategies, embedding models, or retrieval methods work better for different data types and query patterns.
+    Have built retrieval or search systems in production, not just notebooks or demos. You've seen what breaks at scale and have opinions about it.
+    Can reason sharply about trade-offs: chunk size vs. context preservation, recall vs. precision, latency vs. quality, pgvector vs. dedicated vector DB, commercial vs. open embeddings.
+    Are proficient in Python, SQL, and async I/O. Comfortable with relational modelling — you can design a schema that is both AI-friendly and analytically sound.
+    Have experience with embedding models (OpenAI, Cohere, Voyage, open-source) and vector search (pgvector, FAISS, Pinecone, Weaviate, or similar).
+    Know how to evaluate retrieval and LLM output quantitatively — not just "it looks right." You've built or used eval harnesses and take them seriously.
+    Understand LLM capabilities and limitations deeply enough to design around them — you can tell when the failure is a retrieval problem, a schema problem, a prompt problem, or a model problem.
+    Have worked with financial, analytical, or domain-specific data where precision matters — not just web-scale unstructured corpora.
+    Are comfortable owning a full pipeline in a small team, shipping end-to-end rather than living inside one layer.
+
+
+Bonus Points
+
+
+    You've designed schemas for LLM consumption (star schemas, semantic layers, metric definitions).
+    You've built MCP servers, agent tools, or similar structured LLM interfaces.
+    You've shipped ingestion for messy real-world data: ERP exports, Excel workbooks with cross-sheet formulas, scanned documents, IoT sensor streams.
+    You've tuned Postgres for mixed OLTP + vector workloads, or run pgvector at scale.
+    You have a point of view on agentic retrieval, multi-hop reasoning, or query-time planning.
+
+
+Our Current Stack
+
+
+For context, not as a requirement:
+
+
+Python (FastMCP, Starlette/ASGI, asyncpg), PostgreSQL (+ pgvector), embedding models, vector search, Docker, Render, MCP (Model Context Protocol), integrations with Jedox, Sage 300, Google Workspace, and sensor platforms.
+
+
+Compensation
+
+
+Salary commensurate with experience. All employees participate in our Employee Stock Ownership Plan (ESOP).
+
+
+How to Apply
+
+
+Reach out and send your CV to gio.sforza@massa-advisors.ai. A short note on what you've built and why this role interests you goes a long way.
+
+
+ massa-advisors.ai
