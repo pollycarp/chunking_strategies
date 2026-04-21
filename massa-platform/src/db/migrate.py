@@ -18,7 +18,13 @@ async def run_migrations() -> None:
     3. For each .sql file sorted by name, check if it's already been applied
     4. If not, run it and record it in schema_migrations
     """
-    conn = await asyncpg.connect(dsn=settings.database_dsn)
+    conn = await asyncpg.connect(
+        host=settings.postgres_host,
+        port=settings.postgres_port,
+        user=settings.postgres_user,
+        password=settings.postgres_password,
+        database=settings.postgres_db,
+    )
 
     try:
         # Ensure migration tracking table exists before we check it

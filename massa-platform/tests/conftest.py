@@ -1,3 +1,5 @@
+import asyncio
+
 import pytest
 import asyncpg
 from asyncpg import Pool
@@ -6,18 +8,38 @@ from src.config import settings
 from src.db.migrate import run_migrations
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
+def run_db_migrations():
+    """
+    Sync fixture — runs migrations once before any test using its own event loop.
+
+    Why sync? pytest-asyncio gives each async fixture a loop tied to its scope.
+    A session-scoped async fixture would run in the session loop, but our
+    function-scoped db_pool runs in the test's function loop — they never match.
+    Making this sync means it calls asyncio.run() and exits cleanly with no
+    shared loop state, so the test loops are never polluted.
+    """
+    asyncio.run(run_migrations())
+
+
+@pytest.fixture
 async def db_pool() -> Pool:
     """
-    Session-scoped fixture: creates the pool once for all tests.
+    Function-scoped fixture: creates a fresh pool for each test.
 
-    'scope=session' means this setup runs once per test session, not once
-    per test function. Avoids the overhead of creating/destroying a pool
-    for every single test.
+    This avoids the 'attached to a different loop' error that occurs when
+    an asyncpg pool created in one event loop is used in another.
+    pytest-asyncio gives each test its own event loop, so the pool must
+    be created inside that same loop.
     """
-    # Run migrations so the schema is up to date before any test touches the DB
-    await run_migrations()
-
-    pool = await asyncpg.create_pool(dsn=settings.database_dsn, min_size=1, max_size=3)
+    pool = await asyncpg.create_pool(
+        host=settings.postgres_host,
+        port=settings.postgres_port,
+        user=settings.postgres_user,
+        password=settings.postgres_password,
+        database=settings.postgres_db,
+        min_size=1,
+        max_size=3,
+    )
     yield pool
     await pool.close()

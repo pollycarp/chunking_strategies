@@ -102,6 +102,7 @@ def test_config_raises_on_missing_required_field():
     """
     with pytest.raises(ValidationError) as exc_info:
         Settings(
+            _env_file=None,       # Disable .env file so pydantic can't fill in the missing field
             postgres_host="localhost",
             postgres_port=5432,
             postgres_db="test",
