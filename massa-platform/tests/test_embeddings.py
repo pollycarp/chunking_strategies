@@ -7,6 +7,7 @@ Test categories:
 """
 
 import hashlib
+import uuid
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import numpy as np
@@ -178,7 +179,8 @@ async def test_cache_stores_and_retrieves_embedding(db_pool):
 
     # Build a mock embedder that tracks how many times it was called
     mock_embedder = MagicMock(spec=EmbeddingModel)
-    mock_embedder.model_name = "test-model-cache"
+    # Unique model name per test run — prevents cache hits from previous runs
+    mock_embedder.model_name = f"test-model-cache-{uuid.uuid4().hex[:8]}"
     mock_embedder.dimensions = 1536
     mock_embedder.embed = fake_embed
 
@@ -208,7 +210,7 @@ async def test_cache_different_texts_get_different_entries(db_pool):
         return make_fake_embedding(text)
 
     mock_embedder = MagicMock(spec=EmbeddingModel)
-    mock_embedder.model_name = "test-model-diff"
+    mock_embedder.model_name = f"test-model-diff-{uuid.uuid4().hex[:8]}"
     mock_embedder.dimensions = 1536
     mock_embedder.embed = fake_embed
 

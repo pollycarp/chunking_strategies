@@ -12,6 +12,10 @@ dependencies = [
     "voyageai>=0.2.3",          # Voyage AI embeddings (finance-domain models)
     "numpy>=1.26.0",            # Vector math for similarity tests
     "pgvector>=0.3.0",          # Registers asyncpg codec for the vector type
+    "pdfplumber>=0.11.0",       # PDF text extraction (preserves layout)
+    "python-docx>=1.1.0",       # Word document parsing
+    "openpyxl>=3.1.0",          # Excel workbook parsing
+    "tiktoken>=0.7.0",          # OpenAI tokenizer — accurate token counting
 ]
 
 [dependency-groups]
@@ -19,6 +23,7 @@ dev = [
     "pytest>=8.0.0",            # Test runner
     "pytest-asyncio>=0.23.0",   # Async test support
     "pytest-env>=1.1.0",        # Set env vars in pytest
+    "fpdf2>=2.7.0",             # Creates PDF fixture files in tests
 ]
 
 [tool.pytest.ini_options]
