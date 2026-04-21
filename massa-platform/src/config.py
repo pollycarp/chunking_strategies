@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     postgres_user: str
     postgres_password: str
 
+    # Embedding API keys
+    openai_api_key: str = ""           # Required for OpenAI embeddings
+    voyage_api_key: str = ""           # Optional — Voyage AI finance-domain embeddings
+
     # Application
     env: str = "development"
 

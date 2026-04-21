@@ -3,6 +3,7 @@ import asyncio
 import pytest
 import asyncpg
 from asyncpg import Pool
+from pgvector.asyncpg import register_vector
 
 from src.config import settings
 from src.db.migrate import run_migrations
@@ -40,6 +41,7 @@ async def db_pool() -> Pool:
         database=settings.postgres_db,
         min_size=1,
         max_size=3,
+        init=register_vector,   # register pgvector codec on every connection
     )
     yield pool
     await pool.close()

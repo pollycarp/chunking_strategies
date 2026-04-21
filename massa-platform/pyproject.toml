@@ -8,9 +8,13 @@ dependencies = [
     "asyncpg>=0.29.0",          # Async PostgreSQL driver
     "pydantic-settings>=2.2.0", # Config from .env with type validation
     "pydantic>=2.6.0",          # Data validation
+    "openai>=1.30.0",           # OpenAI embeddings API
+    "voyageai>=0.2.3",          # Voyage AI embeddings (finance-domain models)
+    "numpy>=1.26.0",            # Vector math for similarity tests
+    "pgvector>=0.3.0",          # Registers asyncpg codec for the vector type
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=8.0.0",            # Test runner
     "pytest-asyncio>=0.23.0",   # Async test support
@@ -18,14 +22,7 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-asyncio_mode = "auto"                        # All async tests run automatically without extra decorators
+asyncio_mode = "auto"
 env = [
     "ENV=test",
-]
-
-[tool.uv]
-dev-dependencies = [
-    "pytest>=8.0.0",
-    "pytest-asyncio>=0.23.0",
-    "pytest-env>=1.1.0",
 ]
