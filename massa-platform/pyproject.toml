@@ -17,6 +17,7 @@ dependencies = [
     "openpyxl>=3.1.0",          # Excel workbook parsing
     "tiktoken>=0.7.0",          # OpenAI tokenizer — accurate token counting
     "cohere>=5.0.0",            # Cohere Rerank API — cross-encoder re-ranking
+    "fastmcp>=2.0.0",           # MCP server framework — exposes tools to LLMs
 ]
 
 [dependency-groups]
