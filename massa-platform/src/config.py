@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     openai_api_key: str = ""           # Required for OpenAI embeddings
     voyage_api_key: str = ""           # Optional — Voyage AI finance-domain embeddings
 
+    # Retrieval API keys
+    cohere_api_key: str = ""           # Optional — Cohere Rerank cross-encoder
+
     # Application
     env: str = "development"
 

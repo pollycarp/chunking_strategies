@@ -16,6 +16,7 @@ dependencies = [
     "python-docx>=1.1.0",       # Word document parsing
     "openpyxl>=3.1.0",          # Excel workbook parsing
     "tiktoken>=0.7.0",          # OpenAI tokenizer — accurate token counting
+    "cohere>=5.0.0",            # Cohere Rerank API — cross-encoder re-ranking
 ]
 
 [dependency-groups]
