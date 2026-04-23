@@ -27,6 +27,9 @@ class Settings(BaseSettings):
     # Retrieval API keys
     cohere_api_key: str = ""           # Optional — Cohere Rerank cross-encoder
 
+    # LLM
+    anthropic_api_key: str = ""        # Required for Claude agent (Phase 7)
+
     # Application
     env: str = "development"
 
