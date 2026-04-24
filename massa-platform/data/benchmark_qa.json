@@ -1,0 +1,32 @@
+[
+  {
+    "id": "q001",
+    "question": "What was the EBITDA margin for Q3 2024?",
+    "relevant_chunk_ids": [],
+    "expected_keywords": ["ebitda", "margin", "q3", "2024"]
+  },
+  {
+    "id": "q002",
+    "question": "What revenue growth did the agribusiness segment achieve?",
+    "relevant_chunk_ids": [],
+    "expected_keywords": ["revenue", "growth", "agribusiness"]
+  },
+  {
+    "id": "q003",
+    "question": "What are the key risk factors related to foreign exchange?",
+    "relevant_chunk_ids": [],
+    "expected_keywords": ["foreign", "exchange", "risk", "hedging"]
+  },
+  {
+    "id": "q004",
+    "question": "What was the debt-to-EBITDA ratio?",
+    "relevant_chunk_ids": [],
+    "expected_keywords": ["debt", "ebitda", "ratio", "leverage"]
+  },
+  {
+    "id": "q005",
+    "question": "What did management say about cost inflation?",
+    "relevant_chunk_ids": [],
+    "expected_keywords": ["cost", "inflation", "input"]
+  }
+]
