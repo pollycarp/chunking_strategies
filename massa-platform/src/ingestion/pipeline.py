@@ -9,16 +9,25 @@ from src.ingestion.chunkers.fixed_size import FixedSizeChunker
 from src.ingestion.deduplication import is_already_ingested
 from src.ingestion.models import Chunk, ParsedDocument
 from src.ingestion.parsers.base import DocumentParser
-from src.ingestion.parsers.docx_parser import DocxParser
 from src.ingestion.parsers.pdf_parser import PDFParser
 from src.ingestion.parsers.xlsx_parser import XLSXParser
 
-# File extension → parser class
+# DOCX requires lxml which may be blocked by OS Application Control policies.
+# Import it lazily so PDF/XLSX still work if lxml cannot load.
+try:
+    from src.ingestion.parsers.docx_parser import DocxParser as _DocxParser
+    _DOCX_AVAILABLE = True
+except ImportError:
+    _DocxParser = None      # type: ignore[assignment]
+    _DOCX_AVAILABLE = False
+
+# File extension → parser class (built at import time with what's available)
 _PARSERS: dict[str, type[DocumentParser]] = {
     ".pdf":  PDFParser,
-    ".docx": DocxParser,
     ".xlsx": XLSXParser,
 }
+if _DOCX_AVAILABLE:
+    _PARSERS[".docx"] = _DocxParser
 
 
 @dataclass
